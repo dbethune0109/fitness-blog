@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>My Blog</title>
+  </head>
+  <body>
+    <a href='/login'>Login</a>
+    <br />
+    <a href='/signup'>Sign up</a>
+    <br />
+    <a href='/logout'>Log out</a>
+    <br />
+    <a href='/blog'>Browse</a>
+    <br />
+    {% if author %}
+      <a href='/blog/newpost'>New Post</a>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Fitness Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style type="text/css">
+      .label {text-align: right;color:black;}
+      .error {color: red}
+    </style>
+  </head>
+  <body background="http://i.huffpost.com/gen/1333817/images/o-FITNESS-FORECAST-facebook.jpg">
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/blog">Fitness Blog</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          {% block nav %}
+            {% if not author %}
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Sign Up</a></li>
+            {% endif %}
+            {% if author %}
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/blog/newpost">New Post</a></li>
+            {% endif %}
+          {% endblock %}
+          <li><a href="/blog">Browse</a></li>
+        </ul>
+      </div>
+    </nav>
+    {{msg}}
+    {% block html %}{% endblock %}
+  </body>
+</html>

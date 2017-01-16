@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block nav %}
+  {% if not author %}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Sign Up</a></li>
+  {% endif %}
+  {% if author %}
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/blog/newpost">New Post</a></li>
+  {% endif %}
+{% endblock %}
+{% block html %}
+  <div class="container">
+    <form method="post">
+      <div class="col-md-12">
+        <label>
+          <div>Subject</div>
+          <input type="text" name="subject" value="{{subject}}" />
+        </label>
+      </div>
+      <div class="col-md-12">
+        <label>
+          <div>Content</div>
+          <textarea name="content">{{content}}</textarea>
+        </label>
+        <div class="error">{{error}}</div>
+        <input type="submit" />
+      </div>
+    </form>
+  </div>
+{% endblock %}

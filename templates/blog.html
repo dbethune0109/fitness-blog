@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block nav %}
+  {% if not user_id %}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Sign Up</a></li>
+  {% endif %}
+  {% if user_id %}
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/blog/newpost">New Post</a></li>
+  {% endif %}
+{% endblock %}
+{% block html %}
+  <h1>Blogs</h1>
+  {{message}}
+  {% for blog in blogs %}
+    <div class="container">
+      <div class="blog, col-md-12">
+        <div class="blog-subject">{{blog.subject}}</div>
+        <br />
+        <div class="blog-content">{{blog.content}}</div>
+        <form method="post" action="/blog/{{blog.key().id()}}">
+          <input type="submit" name="comment" value="comment" />
+          {% if user_id == blog.user_id %}
+            <input type="submit" name="delete" value="delete" />
+            <input type="submit" name="edit" value="edit" />
+          {% endif %}
+          <input type="submit" name="view" value="view" />
+          {% if not user_id == blog.user_id %}
+            <input type="submit" name="like" value="like" />
+          {% endif %}
+          {% if not user_id == blog.user_id %}
+            <input type="submit" name="dislike" value="dislike" />
+          {% endif %}
+          <div style="color:blue">{{blog.likes}}</div>
+          <div style="color:red">{{blog.dislikes}}</div>
+        </form>
+      </div>
+    </div>
+    <br />
+    <br />
+  {% endfor%}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block nav %}
+  {% if not author %}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Sign Up</a></li>
+  {% endif %}
+  {% if author %}
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/blog/newpost">New Post</a></li>
+  {% endif %}
+{% endblock %}
+{% block html %}
+    <h2>Login</h2>
+    <form method="post">
+      <table>
+        <tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input type="text" name="username" value="{{username}}">
+          </td>
+          <td class="error">
+            {{error_username}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+          <td class="error">
+            {{error_password}}
+          </td>
+        </tr>
+        <tr>
+          <td class="error">
+            {{error}}
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit">
+    </form>
+{% endblock %}

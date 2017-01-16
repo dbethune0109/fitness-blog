@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block nav %}
+  {% if not author %}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Sign Up</a></li>
+  {% endif %}
+  {% if author %}
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/blog/newpost">New Post</a></li>
+  {% endif %}
+{% endblock %}
+{% block html %}
+  <div class="blog">
+    <div class="blog-subject">{{blog.subject}}</div>
+    <div class="blog-content">{{blog.content}}</div>
+  </div>
+  <form method="post">
+    {% if author == blog.user_id %}
+      <input type="submit" name="delete" value="delete"/>
+      <input type="submit" name="edit" value="edit" />
+    {% endif %}
+    <br />
+    <input type="submit" name="comment" value="comment" />
+  </form>
+  {% for c in blog.blog_comments %}
+    <div class="container">
+      <div class="comments, col-md-12">
+        <p>{{c.content}}</p>
+        <br />
+        <form method="post" action="/comment/edit/{{c.key().id()}}">
+          {% if author == c.user_id %}
+            <input type="submit" name="delete-comment" value="delete" />
+            <input type="submit" name="edit-comment" value="edit" />
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
