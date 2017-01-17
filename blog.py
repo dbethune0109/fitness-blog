@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 
 """blog.py: Controls multi-user blog functionality using Google App Engine"""
 

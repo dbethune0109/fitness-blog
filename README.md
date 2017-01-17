@@ -11,6 +11,6 @@ Once you have it installed, using the command line or terminal, navigate to the 
 
 Now open an internet browser and navigate to "localhost:8080".
 
-To view the hosted site, go to this link:  to open my blog site.
+To view the hosted site, go to this link:  to open my blog site.(https://fitness-blog.appspot.com)
 
 The nav-bar is located at the upper left hand side of the page. You can sign-up, create posts, edit and delete posts and when done you can log out.
